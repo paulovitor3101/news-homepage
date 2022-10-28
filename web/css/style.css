@@ -1,0 +1,376 @@
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.3s;
+  line-height: 1.4;
+  font-style: normal;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font);
+  transition: all 0.3s linear;
+}
+
+a,
+li {
+  list-style: none;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+  display: block;
+  max-width: 100%;
+}
+
+:root {
+  /*Cores*/
+
+  --orange: hsl(35, 77%, 62%);
+  --red: hsl(5, 85%, 63%);
+  --white: hsl(36, 100%, 99%);
+  --blue: hsl(233, 8%, 79%);
+  --grayish-blue: hsl(236, 13%, 42%);
+  --dark-blue: hsl(240, 100%, 5%);
+
+  /*Tipografia*/
+
+  --font: "Inter", sans-serif;
+  --w400: 400;
+  --w700: 700;
+  --w800: 800;
+}
+
+.container {
+  width: 100%;
+  padding: 1rem;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .nav {
+  top: 0;
+  right: 0;
+  height: 0;
+  width: 75%;
+  display: flex;
+  transition: 0.3s;
+  overflow: hidden;
+  background: #fff;
+  visibility: hidden;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header .nav.activeMenu {
+  height: 100vh;
+  overflow: hidden;
+  visibility: visible;
+  transition: all 0.3s ease-out;
+}
+
+.header .nav #btn--close {
+  cursor: pointer;
+  padding: 1.2rem;
+  align-self: flex-end;
+}
+
+.header #btn--menu {
+  cursor: pointer;
+}
+
+.header .nav .nav__links {
+  padding: 1.5rem;
+  margin-top: 50px;
+  align-self: flex-start;
+}
+
+.header .nav .nav__links li a {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: var(--dark-blue);
+  font-weight: var(--w400);
+}
+
+.header .nav .nav__links li a:hover {
+  color: var(--red);
+}
+
+/* Media */
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding-top: 3%;
+  }
+
+  .header .nav {
+    height: auto;
+    overflow: auto;
+    position: relative;
+    visibility: visible;
+    background: transparent;
+  }
+
+  .header .nav .nav__links {
+    display: flex;
+    margin-top: 0;
+    padding: 1.5rem;
+    column-gap: 3rem;
+    align-self: flex-end;
+  }
+
+  .header .nav .nav__links li a {
+    margin-bottom: 0;
+    color: var(--grayish-blue);
+  }
+
+  .header .nav #btn--close {
+    display: none;
+  }
+
+  .header #btn--menu {
+    display: none;
+  }
+}
+
+/* HEADER */
+
+.content {
+  padding: 0 1rem;
+}
+
+.content__text {
+  padding-bottom: 4rem;
+}
+
+.content .title {
+  max-width: 30ch;
+  padding: 1rem 0;
+  line-height: 1.1;
+  font-size: 2.5rem;
+  color: var(--dark-blue);
+  font-weight: var(--w800);
+}
+
+.content__text .text {
+  max-width: 50ch;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  color: var(--grayish-blue);
+}
+
+.content__text .btn {
+  color: #fff;
+  display: block;
+  font-size: 0.8rem;
+  padding: 1rem 2rem;
+  letter-spacing: 3px;
+  background: var(--red);
+  max-width: max-content;
+  font-weight: var(--w700);
+  text-transform: uppercase;
+}
+
+.content__text .btn:hover {
+  background: var(--dark-blue);
+}
+
+/* Media */
+
+@media screen and (min-width: 768px) {
+  .content {
+    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .content--img {
+    grid-column: 2 span;
+    overflow: hidden;
+  }
+
+  .content--img img:hover {
+    transform: scale(1.1);
+  }
+
+  .content__text {
+    padding: 0;
+    grid-row: 2;
+    display: grid;
+    align-items: center;
+    grid-column: 2 span;
+    align-items: flex-start;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content__text .text {
+    font-size: 1rem;
+    max-width: 50ch;
+  }
+
+  .content__text .title {
+    padding: 0;
+    max-width: 8ch;
+    font-size: 4rem;
+  }
+
+  .content .content__new {
+    height: 100%;
+    grid-row: 2 span;
+  }
+}
+
+/* Media */
+
+/* Content New */
+
+.content__new {
+  padding: 1rem;
+  max-width: 472px;
+  margin-bottom: 3rem;
+  background: var(--dark-blue);
+}
+
+.content__new .new__title {
+  font-size: 3rem;
+  color: var(--orange);
+  font-weight: var(--w800);
+}
+
+.content__new .new__text {
+  padding: 2rem 0;
+}
+
+.content__new .new__text:nth-child(-n + 3) {
+  border-bottom: 1px solid var(--blue);
+}
+
+.content__new .new__text h3 {
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  font-weight: var(--w700);
+}
+
+.content__new .new__text h3:hover {
+  cursor: pointer;
+  color: var(--orange);
+}
+
+.content__new .new__text p {
+  line-height: 1.8;
+  color: var(--blue);
+}
+
+/* Media */
+
+@media screen and (min-width: 768px) {
+  .content__new .new__title {
+    font-size: 4rem;
+  }
+
+  .content__new .new__text h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Media */
+
+/* Content Blog */
+
+.content__blog {
+  row-gap: 2rem;
+  display: flex;
+  padding-bottom: 3%;
+  grid-column: 3 span;
+  flex-direction: column;
+}
+
+.content__blog .blog {
+  display: flex;
+  column-gap: 1rem;
+  max-width: 500px;
+}
+
+.content__blog .blog .img {
+  width: 100%;
+  display: block;
+  max-width: 100px;
+  overflow: hidden;
+}
+
+.content__blog .blog .img img {
+  width: 100%;
+}
+
+.content__blog .blog .img img:hover {
+  transform: scale(1.2);
+}
+
+.content__blog .blog__text span {
+  display: block;
+  font-size: 2rem;
+  color: var(--blue);
+  font-weight: var(--w700);
+}
+
+.content__blog .blog__text h4 {
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  font-weight: var(--w800);
+  color: var(--dark-blue);
+}
+
+.content__blog .blog__text h4:hover {
+  color: var(--red);
+}
+
+.content__blog .blog__text p {
+  color: var(--grayish-blue);
+}
+
+@media screen and (min-width: 768px) {
+  .content__blog {
+    gap: 1.2rem;
+    flex-direction: row;
+  }
+}
+
+/* Animate CSS */
+
+.animate__backInDown {
+  animation: fadeInDown;
+  animation-duration: 0.8s;
+}
+
+.animate__fadeInLeft {
+  animation: fadeInLeft;
+  animation-duration: 1s;
+}
+
+.animate__fadeInRight {
+  animation: fadeInRight;
+  animation-duration: 1s;
+}
+
+.animate__fadeInUp {
+  animation: fadeInUp;
+  animation-duration: 1s;
+}
